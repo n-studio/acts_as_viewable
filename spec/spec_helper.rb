@@ -12,7 +12,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.timestamps
   end
 
-  create_table :viewable, :force => true do |t|
+  create_table :viewables, :force => true do |t|
     t.timestamps
   end
 
@@ -36,7 +36,7 @@ end
 
 
 def clean_database
-  models = []
+  models = [Viewable, Viewer, ActsAsViewable::View ]
   models.each do |model|
     ActiveRecord::Base.connection.execute "DELETE FROM #{model.table_name}"
   end
