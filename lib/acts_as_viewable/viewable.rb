@@ -14,8 +14,8 @@ module ActsAsViewable
         false
       end
 
-      def acts_as_favourable(*args)
-        has_many :favourites, :class_name => "ActsAsViewable::View", :as => :viewable
+      def acts_as_viewable(*args)
+        has_many :views, :class_name => "ActsAsViewable::View", :as => :viewable
 
         def self.viewable?
           true
