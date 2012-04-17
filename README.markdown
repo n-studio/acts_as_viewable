@@ -8,8 +8,9 @@ Adds functionality to models.
 
 To use it, add it to your Gemfile:
 
-    gem 'acts_as_viewable', :git => 'git@github.com:ivoreis/acts_as_viewable.git'
-    bundle update
+    gem 'acts_as_viewable', :git => 'git@github.com:ivoreis/acts_as_viewable.git' or
+    gem 'acts_as_viewable', :github => 'ivoreis/acts_as_viewable'
+    bundle update / bundle install
 
 ### Post Installation
 
@@ -19,6 +20,7 @@ To use it, add it to your Gemfile:
 
 ### Configuration
 
+Nothing to do
 
 
 ### Testing
@@ -28,6 +30,26 @@ ActsAsViewable uses RSpec for its test coverage
     rake spec
 
 ## Usage
+
+```ruby
+class Viewable < ActiveRecord::Base
+  acts_as_viewable
+end
+
+class Viewer < ActiveRecord::Base
+  acts_as_viewer
+end
+
+After is possible to use this way:
+
+#Create a new visualization by the @viewer
+@viewable.viewed_by(@viewer)
+#Count the visualizations of this @viewable
+@viewable.count_views
+#Retrieve the visualizations that the @viewer made to this @viewable item
+@viewer.views_of(@viewable)
+```
+
 
 
 ## Credits
