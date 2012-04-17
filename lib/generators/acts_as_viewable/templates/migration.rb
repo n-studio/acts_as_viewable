@@ -3,6 +3,8 @@ class CreateViews < ActiveRecord::Migration
     create_table :views, :force => true do |t|
       t.references :viewer, :polymorphic => true
       t.references :viewable, :polymorphic => true
+      t.integer :times_viewed, :default => 1
+      t.datetime :past_time_viewed, :default => Time.now
       t.timestamps
     end
 

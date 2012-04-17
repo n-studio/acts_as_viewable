@@ -22,7 +22,7 @@ describe :ActsAsViewable do
   it "should retrieve the visualizations by viewer" do
     @viewable.viewed_by(@viewer)
     @viewable.viewed_by(@viewer)
-    @viewer.views_of(@viewable).count.should == 2
+    @viewer.views_of(@viewable).times_viewed == 2
   end
 
 end

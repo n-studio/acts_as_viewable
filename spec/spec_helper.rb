@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 1) do
   create_table :views, :force => true do |t|
     t.references :viewable, :polymorphic => true
     t.references :viewer, :polymorphic => true
+    t.integer :times_viewed, :default => 1
+    t.datetime :past_time_viewed, :default => Time.now
     t.timestamps
   end
 

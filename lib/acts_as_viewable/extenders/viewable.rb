@@ -3,11 +3,11 @@ module ActsAsViewable
     module Viewable
 
       def viewed_by viewer
-        ActsAsViewable::View.create(viewer: viewer, viewable: self)
+        ActsAsViewable::View.view_by(viewer, self)
       end
 
       def count_views
-        ActsAsViewable::View.by_viewable(self).count
+        views.collect(&:times_viewed).inject(:+)
       end
 
     end
