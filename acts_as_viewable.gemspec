@@ -10,13 +10,13 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ivo Reis"]
   s.date = "2012-03-29"
-  s.description = "Simple gem that adds functionality to the active record, is possible to add a object to a favourite list"
+  s.description = "Simple gem that adds functionality to the active record"
   s.email = "reis.ivo@gmail.com"
   s.homepage = "http://github.com/ivoreis/acts_as_viewable"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.18"
-  s.summary = "Acts as favourite gem"
+  s.summary = "Acts as viewable gem"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
