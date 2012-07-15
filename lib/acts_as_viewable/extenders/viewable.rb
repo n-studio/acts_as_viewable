@@ -1,13 +1,18 @@
-module ActsAsViewable
+module ActsAsViewable #:nodoc:
+  # Module Extenders
   module Extenders
+    # Module Viewable
     module Viewable
 
+      # Add a view for this object
       def viewed_by viewer
-        ActsAsViewable::View.view_by(viewer, self)
+        ActsAsViewable::View.viewed_by(viewer, self)
       end
 
+      # Get the view count for this object
       def count_views
-        views.collect(&:times_viewed).inject(:+)
+        n = views.collect(&:times_viewed).inject(:+)
+        n ? n : 0
       end
 
     end
