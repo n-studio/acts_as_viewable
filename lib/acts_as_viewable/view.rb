@@ -7,9 +7,6 @@ module ActsAsViewable #:nodoc:
     validates_presence_of :viewable_id
     validates_presence_of :viewer_id
 
-    attr_accessible :viewable, :viewer
-    attr_accessible :viewable_id, :viewer_id
-
     # @scope
     # Get views by the viewable object
     scope :by_viewable, lambda{ |viewable|
