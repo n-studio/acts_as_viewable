@@ -50,6 +50,9 @@ module ActsAsViewable #:nodoc:
     def update_count!
       self.times_viewed += 1
       self.past_time_viewed = updated_at
+      if self.viewable.respond_to?(:views_count)
+        viewable.class.increment_counter(:views_count, self.viewable_id)
+      end
       save!
     end
 
