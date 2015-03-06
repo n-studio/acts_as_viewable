@@ -1,7 +1,7 @@
 module ActsAsViewable #:nodoc:
   # Class View
   class View < ActiveRecord::Base
-    belongs_to :viewable, polymorphic: true
+    belongs_to :viewable, polymorphic: true, counter_cache: :views_count
     belongs_to :viewer, polymorphic: true
 
     validates :viewable_id, presence: true
