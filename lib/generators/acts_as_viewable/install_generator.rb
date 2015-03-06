@@ -14,7 +14,7 @@ class ActsAsViewable::InstallGenerator < Rails::Generators::Base #:nodoc:
 
   argument :name, :type => :string, :default => 'create_views'
   def generate_files
-    migration_template 'migration.rb', "db/migrate/#{name}"
+    migration_template 'migration.rb', "db/migrate/#{name}.rb"
   end
 
 end
