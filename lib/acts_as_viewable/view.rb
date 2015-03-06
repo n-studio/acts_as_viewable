@@ -1,22 +1,22 @@
 module ActsAsViewable #:nodoc:
   # Class View
   class View < ActiveRecord::Base
-    belongs_to :viewable, :polymorphic => true
-    belongs_to :viewer, :polymorphic => true
+    belongs_to :viewable, polymorphic: true
+    belongs_to :viewer, polymorphic: true
 
-    validates_presence_of :viewable_id
-    validates_presence_of :viewer_id
+    validates :viewable_id, presence: true
+    # validates :viewer_id, presence: true
 
     # @scope
     # Get views by the viewable object
-    scope :by_viewable, lambda{ |viewable|
+    scope :by_viewable, -> (viewable) {
       where(viewable_id: viewable, viewable_type: viewable.class.to_s).
           order("viewable_id ASC")
     }
 
     # @scope
     # Get views by the viewer object
-    scope :by_viewer, lambda{ |viewer|
+    scope :by_viewer, -> (viewer) {
       where(viewer_id: viewer, viewer_type: viewer.class.to_s).
           order("viewer_id ASC")
     }
@@ -30,7 +30,7 @@ module ActsAsViewable #:nodoc:
       # In other case it will create a new view
       # @param [Viewer] viewer
       # @param [Viewable] viewable
-      def viewed_by viewer, viewable
+      def viewed_by(viewer, viewable)
         view = by_viewer(viewer).by_viewable(viewable).first
         if view
           view.update_count!
