@@ -4,7 +4,7 @@ class CreateViews < ActiveRecord::Migration
       t.references :viewer, polymorphic: true
       t.references :viewable, polymorphic: true, null: false
       t.integer :times_viewed, default: 1
-      t.datetime :past_time_viewed, default: Time.now
+      t.datetime :past_time_viewed
       t.timestamps
     end
 
